@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="page-header">
+		<h1>Vær med til at skabe Geekhub</h1>
+		<p class="teaser">Stem på din yndlings feature, deltag i dialog, og få tidlig adgang.</p>
+	</div>
+	<div style="text-align: left; background-color: #f8f8ff; padding: 15px; border-radius: 3px; margin-bottom: 20px; margin-top: 20px;">
+		Nedenfor ses en liste af features som vi er igang med at samle interesse til. Hvis du skriver din email på listen, så vil du angive din stemme for den pågældene feature. Du må skrive dig på alle de features du ønsker. Du vil derefter modtage mails, hvis vi har behov for at samle feedback, samt information omkring den pågældende feature.
+	</div>
+
+	<% @features.each do |f| %>
+	<div class="feature panel panel-default">
+		<div class="panel-heading">
+			<%= f.name %>
+		</div>
+		<div class="panel-body">
+			<p class="small"><%= f.description %></p>
+			<%= form_tag 'subscribe' do %>
+				<%= hidden_field_tag :id, f.id %>
+				<div class="form-group">
+					<div class="input-group">
+						<%= email_field_tag :email, "", class: "form-control", placeholder: "din@email.dk", required: true %>
+						<div class="input-group-btn">
+							<%= submit_tag "Skriv dig på", class: "btn btn-primary" %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<% end %>
+
+	<a href="mailto:hello@geekhub.dk">Send en mail til os, for at foreslå en feature</a>
+</div>
